@@ -19,8 +19,15 @@ void loop() {
   Serial.print("Уровень жидкости: ");
   Serial.println(AquaOutput);
   
-  digitalWrite(RELAY_IN, HIGH);
+  //digitalWrite(RELAY_IN, HIGH);
   // Ждем 1 секунду перед следующим чтением
   delay(1000);
-  digitallWrite(RELAY_IN, LOW);
+  if (AquaOutput < 4){
+    digitalWrite(RELAY_IN, HIGH); // включаем реле
+  }
+  else{
+    digitalWrite(RELAY_IN, LOW);
+  }
+  //digitalWrite(RELAY_IN, LOW);
+  //delay(1000);
 }
